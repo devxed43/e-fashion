@@ -7,7 +7,6 @@ const SignUpForm = () => {
   return (
     <div
       style={{
-        border: "1px solid black",
         padding: "40px",
         display: "flex",
         flexFlow: "column",

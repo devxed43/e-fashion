@@ -15,12 +15,12 @@ const Navigation = () => {
           display: "flex",
           justifyContent: "space-evenly",
           alignItems: "center",
-          height: "25vh",
+          height: "15vh",
           cursor: "pointer",
         }}
       >
         <Link to="/">
-          <h2>LOGO</h2>
+          <h1>LOGO</h1>
         </Link>
         <Link to="shop">
           <b>Shop</b>

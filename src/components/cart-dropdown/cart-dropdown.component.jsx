@@ -8,15 +8,19 @@ const CartDropdown = () => {
   return (
     <div
       style={{
-        height: "300px",
+        height: "400px",
         width: "300px",
         border: "1px solid black",
         position: "absolute",
         right: "10px",
-        top: "130px",
-        background: "blue",
+        top: "100px",
+        background: "whitesmoke",
+        padding: "2rem",
         color: "black",
         cursor: "pointer",
+        display: "flex",
+        flexFlow: "column",
+        textAlign: "center",
       }}
     >
       <p>Cart Dropdown Window will retain the cart items</p>
