@@ -44,7 +44,6 @@ const Directory = () => {
         alignItems: "center",
         height: "auto",
         padding: "50px",
-        
       }}
     >
       {categories.map((category) => (

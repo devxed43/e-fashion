@@ -1,40 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
+
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils";
+
+const defaultFormFields = {
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const SignUpForm = () => {
-  const submitHandler = () => {
-    alert("User Created!");
+  const [formFields, setFormFields] = useState(defaultFormFields);
+
+  const { displayName, email, password, confirmPassword } = formFields;
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("wrong username or password");
+      resetFormFields();
+      return;
+    }
+
+    if (!displayName || !email || !password || !confirmPassword) {
+      alert("empty input");
+      return;
+    }
+
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserDocumentFromAuth(user);
+      resetFormFields();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormFields({ ...formFields, [name]: value });
+  };
+
   return (
-    <div
-      style={{
-        padding: "40px",
-        display: "flex",
-        flexFlow: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <h1>Sign Up:</h1>
-      <form onSubmit={submitHandler}>
-        <label>
-          Display Name:
-          <input type="text" />
-        </label>
+    <div>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={handleChange}
+          name="displayName"
+          value={displayName}
+          placeholder="username"
+          style={{ textAlign: "center" }}
+        />
+
         <br />
-        <label>
-          Email:
-          <input type="email" />
-        </label>
+
+        <input
+          type="email"
+          onChange={handleChange}
+          name="email"
+          value={email}
+          placeholder="email"
+          style={{ textAlign: "center" }}
+        />
+
         <br />
-        <label>
-          Password:
-          <input type="password" />
-        </label>
+
+        <input
+          type="password"
+          onChange={handleChange}
+          name="password"
+          value={password}
+          placeholder="password"
+          style={{ textAlign: "center" }}
+        />
+
         <br />
-        <label>
-          Confirm Password:
-          <input type="password" />
-        </label>
+
+        <input
+          type="password"
+          onChange={handleChange}
+          name="confirmPassword"
+          value={confirmPassword}
+          placeholder="confirm password"
+          style={{ textAlign: "center" }}
+          a
+        />
+
         <button type="submit">Sign Up</button>
       </form>
     </div>

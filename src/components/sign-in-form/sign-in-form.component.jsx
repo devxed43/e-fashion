@@ -17,15 +17,20 @@ const SignInForm = () => {
     >
       <h1>Sign In:</h1>
       <form onSubmit={submitHandler}>
-        <label>
-          Email:
-          <input type="email" />
-        </label>
+        <input
+          type="email"
+          placeholder="email"
+          style={{ textAlign: "center" }}
+        />
+
         <br />
-        <label>
-          Password:
-          <input type="password" />
-        </label>
+
+        <input
+          type="password"
+          placeholder="password"
+          style={{ textAlign: "center" }}
+        />
+
         <button type="submit">Sign In</button>
       </form>
     </div>

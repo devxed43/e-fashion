@@ -10,6 +10,7 @@ const Navigation = () => {
 
   return (
     <Fragment>
+  
       <div
         style={{
           display: "flex",
@@ -17,6 +18,10 @@ const Navigation = () => {
           alignItems: "center",
           height: "15vh",
           cursor: "pointer",
+          border: "1px solid black",
+          margin: "10px",
+          
+          
         }}
       >
         <Link to="/">
